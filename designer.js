@@ -3,17 +3,31 @@
     Button.setWidth(92);
     Button.setHeight(22);
 
-    Button.setPanelStyle({
-        fClass: true, //This property is for the design panel
-        text: true,
-        background: true,
-        border: true,
-        sizePosition: true,
-        shadow: true,
-        textShadow: true,
-        innerShadow: true,
-        label: false
-    });
-
     Button.addStates('hover', 'active', 'focus', 'disabled');
+    Button.addEvent('action');
+
+    var showUrl = function() {
+        if(this.url() || this.url.boundDatasource()) {
+            this.urlTarget.show();
+        } else {
+            this.urlTarget.hide();
+        }
+    };
+
+    var showAction = function() {
+        if(this.actionSource.boundDatasource() && this.actionSource.boundDatasource().datasourceName) {
+            this.actionType.show();
+        } else {
+            this.actionType.hide();
+        }
+    };
+
+    Button.doAfter('init', function() {
+        showUrl.call(this);
+        this.url.onChange(showUrl);
+        this.subscribe('datasourceBindingChange', 'url', showUrl, this);
+
+        showAction.call(this);
+        this.actionSource.onChange(showAction);
+    });
 });
