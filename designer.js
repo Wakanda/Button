@@ -29,5 +29,8 @@
 
         showAction.call(this);
         this.actionSource.onChange(showAction);
+
+        // disable click
+        $(this.node).off('click', this._handleClick);
     });
 });

@@ -28,7 +28,7 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
                 this.node.innerHTML = this.value();
             });
 
-            $(this.node).on('click', function() {
+            this._handleClick = function() {
                 this.fire('action');
 
                 if(this.actionSource() && this.actionType() in this.actionSource()) {
@@ -42,7 +42,8 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
                         window.location = this.url();
                     }
                 }
-            }.bind(this));
+            }.bind(this);
+            $(this.node).on('click', this._handleClick)
         }
     });
 
