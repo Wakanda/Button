@@ -3,10 +3,15 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
 
     var Button = Widget.create('Button', {
         tagName: 'button',
-        value: Widget.property({
+        title: Widget.property({
             defaultValueCallback: function() {
                 return this.node.innerHTML;
             }
+        }),
+        plainText: Widget.property({
+            type: 'boolean',
+            defaultValue: true,
+            bindable: false
         }),
         actionSource: Widget.property({ type: 'datasource' }),
         actionType: Widget.property({
@@ -22,11 +27,17 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
             values: ['_blank', '_self'],
             bindable: false
         }),
+        render: function() {
+            if(this.plainText()) {
+                this.node.textContent = this.title();
+            } else {
+                this.node.innerHTML = this.title();
+            }
+        },
         init: function() {
-            this.node.innerHTML = this.value();
-            this.value.onChange(function() {
-                this.node.innerHTML = this.value();
-            });
+            this.render();
+            this.title.onChange(this.render);
+            this.plainText.onChange(this.render);
 
             this._handleClick = function() {
                 this.fire('action');

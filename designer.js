@@ -28,9 +28,11 @@
         this.subscribe('datasourceBindingChange', 'url', showUrl, this);
 
         showAction.call(this);
-        this.actionSource.onChange(showAction);
+        this.subscribe('datasourceBindingChange', 'actionSource', showAction, this);
 
         // disable click
         $(this.node).off('click', this._handleClick);
     });
+
+    Button.customizeProperty('actionType', { category: 'ActionSource property' });
 });
