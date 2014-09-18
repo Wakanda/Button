@@ -1,11 +1,24 @@
 {
     "name": "Button",
+    "studioName": "Button",
+    "iconPath": "/icons/widget.png",
+    "author": "stephane.puybareau@4d.com",
+    "contributors": [
+        "Olivier Mobili"
+    ],
     "version": "1.0.0",
+    "copyright": "(c) 2014 4D",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Puyb4D/Button.git"
+    },
+    "keywords": ["wakanda", "widget"],
+    "engines": {"wakanda": ">= 10"},
+    "license": "MIT",
     "loadDependencies": [
         {"id": "Widget_V2"},
         {"id": "Button/widget.js", "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
         {"id": "Button/css/widget.css", "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
-        {"id": "Button/icons/widget.png", "studioOnly": true, "path": "WIDGETS_CUSTOM", "type":"icon"},
         {"id": "Button/designer.js", "studioOnly": true, "version": "1.0.0", "path": "WIDGETS_CUSTOM"}
     ]
 }
