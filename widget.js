@@ -16,9 +16,17 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
         actionSource: Widget.property({ type: 'datasource' }),
         actionType: Widget.property({
             type: 'enum',
-            values: [ 'create', 'simple', 'save', 'next',
-                    'previous', 'last', 'first', 'remove' ],
-            defaultValue: 'simple',
+            values: {
+                '':               '',
+                'addNewElement':  'create',
+                'save':           'save',
+                'selectNext':     'next',
+                'selectPrevious': 'previous',
+                'last':           'last',
+                'first':          'first',
+                'removeCurrent':  'remove'
+            },
+            defaultValue: '',
             bindable: false
         }),
         url: Widget.property({ type: 'string' }),
@@ -42,8 +50,19 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
             this._handleClick = function() {
                 this.fire('action');
 
-                if(this.actionSource() && this.actionType() in this.actionSource()) {
-                    this.actionSource()[this.actionType()]();
+                if(this.actionSource()) {
+                    switch (this.actionType()) {
+                        case 'first':
+                            this.actionSource().select(0);
+                            break;
+                        case 'last':
+                            this.actionSource().select(this.actionSource().length - 1);
+                            break;
+                        default:
+                            if(this.actionType() in this.actionSource()) {
+                                this.actionSource()[this.actionType()]();
+                            }
+                    }
                 }
 
                 if(this.url()) {
@@ -54,7 +73,7 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
                     }
                 }
             }.bind(this);
-            $(this.node).on('click', this._handleClick)
+            $(this.node).on('click', this._handleClick);
         }
     });
 
