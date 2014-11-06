@@ -35,21 +35,48 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
             values: ['_blank', '_self'],
             bindable: false
         }),
-        render: function() {
+        renderTitle: function(title) {
+            title = title || this.title() || 'Button';
+            if(title == 'Button' || this.title().length < 1 && this.actionSource.boundDatasource() != null){
+                switch (this.actionType()) {
+                    case '':
+                        title = 'Button';
+                        break;
+                    case 'addNewElement': 
+                        title = 'Create';
+                        break;
+                    case 'selectPrevious':
+                        title = 'Previous';
+                        break;
+                    case 'selectNext':
+                        title = 'Next';
+                        break;
+                    case 'removeCurrent':
+                        title = 'Remove';
+                        break;
+                    default:
+                        title = this.actionType().substring(0,1).toUpperCase() + this.actionType().substring(1);
+                        break;
+                }
+            }
             if(this.plainText()) {
-                this.node.textContent = this.title();
+                this.node.textContent = this.node.innerHTML = title;
             } else {
-                this.node.innerHTML = this.title();
+                this.node.innerHTML = title;
             }
         },
         init: function() {
-            this.render();
-            this.title.onChange(this.render);
-            this.plainText.onChange(this.render);
+            // button text
+            this.renderTitle();
+            this.title.onChange(this.renderTitle);
+            this.plainText.onChange(this.renderTitle);
+            this.actionType.onChange(this.renderTitle);
+
+            // bootstrap classes
+            this.addClass('waf-widget btn btn-default');
 
             this._handleClick = function(event) {
                 this.fire('action');
-
                 if(this.actionSource()) {
                     switch (this.actionType()) {
                         case 'first':
@@ -78,9 +105,6 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
             $(this.node).on('click', this._handleClick);
         }
     });
-
-    Button.inherit(WAF.require('waf-behavior/focus'));
-
 
     return Button;
 });

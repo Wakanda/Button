@@ -1,6 +1,7 @@
 {
     "name": "Button",
-    "category": "Wakanda",
+    "category": "Form Controls",
+    "type": "widget",
     "studioName": "Button",
     "iconPath": "/icons/widget.png",
     "author": "stephane.puybareau@4d.com",

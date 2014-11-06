@@ -1,10 +1,10 @@
 (function(Button) {
     "use strict";
-    Button.setWidth(92);
-    Button.setHeight(22);
+    Button.setWidth(110);
+    Button.setHeight(45);
 
     Button.addStates('hover', 'active', 'focus', 'disabled');
-    Button.addEvent('action');
+    Button.addEvents('action','click','dblclick','mousedown','mouseout','mouseover','mouseup','touchstart','touchend','touchcancel');
 
     var showUrl = function() {
         if(this.url() || this.url.boundDatasource()) {
@@ -35,4 +35,18 @@
     });
 
     Button.customizeProperty('actionType', { category: 'ActionSource property' });
+
+    Button.setPanelStyle({
+        'fClass': true, //This property is for the design panel
+        'text': true,
+        'textShadow': true,
+        'dropShadow': true,
+        'innerShadow': true,
+        'background': true,
+        'border': true,
+        'sizePosition': true,
+        'label': true,
+        'disabled': ['border-radius']
+    });
+
 });
