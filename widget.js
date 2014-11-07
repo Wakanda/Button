@@ -37,7 +37,7 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
         }),
         renderTitle: function(title) {
             title = title || this.title() || 'Button';
-            if(title == 'Button' || this.title().length < 1 && this.actionSource.boundDatasource() != null){
+            if(title == 'Button' || !this.title() && this.actionSource.boundDatasource() != null){
                 switch (this.actionType()) {
                     case '':
                         title = 'Button';
