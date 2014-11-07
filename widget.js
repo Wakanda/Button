@@ -69,8 +69,8 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
             // button text
             this.renderTitle();
             this.title.onChange(this.renderTitle);
-            this.plainText.onChange(this.renderTitle);
-            this.actionType.onChange(function(){ this.renderTitle });
+            this.plainText.onChange(function(){ this.renderTitle() });
+            this.actionType.onChange(function(){ this.renderTitle() });
 
             // bootstrap classes
             this.addClass('waf-widget btn btn-default');
