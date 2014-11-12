@@ -60,10 +60,11 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
                 }
             }
             if(this.plainText()) {
-                this.node.textContent = this.node.innerHTML = title;
+                this.node.textContent = title;
             } else {
                 this.node.innerHTML = title;
             }
+            this.node.insertAdjacentHTML('afterbegin','<span/>');
         },
         init: function() {
             // button text
