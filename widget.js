@@ -4,7 +4,10 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
     var Button = Widget.create('Button', {
         tagName: 'button',
         title: Widget.property({
-            defaultValueCallback: function() {
+            defaultValueCallback: function(plainText) {
+                if(plainText){
+                    return this.node.textContent;
+                }
                 return this.node.innerHTML;
             }
         }),
