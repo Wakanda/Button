@@ -4,7 +4,37 @@
     Button.setHeight(45);
 
     Button.addStates('hover', 'active', 'focus', 'disabled');
-    Button.addEvents('action','click','dblclick','mousedown','mouseout','mouseover','mouseup','touchstart','touchend','touchcancel');
+
+    Button.addEvents({ 
+        'name':'action' 
+    },{ 
+        'name':'click', 
+        'category':'Mouse Events' 
+    },{ 
+        'name':'dblclick', 
+        'category':'Mouse Events'
+    },{ 
+        'name':'mousedown', 
+        'category':'Mouse Events'
+    },{ 
+        'name':'mouseout',
+         'category':'Mouse Events'
+    },{ 
+        'name':'mouseover',
+        'category':'Mouse Events'
+    },{ 
+        'name':'mouseup',
+        'category':'Mouse Events'
+    },{ 
+        'name':'touchstart',
+        'category':'Touch Events'
+    },{ 
+        'name':'touchend',
+        'category':'Touch Events'
+    },{ 
+        'name':'touchcancel',
+        'category':'Touch Events'
+    });
 
     var showUrl = function() {
         if(this.url() || this.url.boundDatasource()) {
