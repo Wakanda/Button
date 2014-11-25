@@ -38,6 +38,9 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
             values: ['_blank', '_self'],
             bindable: false
         }),
+        addTabIndex : function() {
+
+        },
         renderTitle: function(title) {
             title = title || this.title() || 'Button';
             if(title == 'Button' || !this.title() && this.actionSource.boundDatasource() != null){
