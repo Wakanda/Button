@@ -4,6 +4,8 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
     var Button = Widget.create('Button', {
         tagName: 'button',
         title: Widget.property({
+            type: 'string',
+            description: "Title to display for the Button widget.",
             defaultValueCallback: function(plainText) {
                 if(plainText){
                     return this.node.textContent;
@@ -13,12 +15,17 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
         }),
         plainText: Widget.property({
             type: 'boolean',
+            description: "Format HTML text for the Button widget's title.",            
             defaultValue: true,
             bindable: false
         }),
-        actionSource: Widget.property({ type: 'datasource' }),
+        actionSource: Widget.property({ 
+            type: 'datasource',
+            description: "Datasource to define for automatic actions."
+        }),
         actionType: Widget.property({
             type: 'enum',
+            description: "Action to execute on datasource.",
             values: {
                 '':               '',
                 'addNewElement':  'create',
@@ -32,7 +39,10 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
             defaultValue: '',
             bindable: false
         }),
-        url: Widget.property({ type: 'string' }),
+        url: Widget.property({ 
+            type: 'string',
+            description: "URL to go to when Button widget is clicked."
+        }),
         urlTarget: Widget.property({
             type: 'enum',
             values: ['_blank', '_self'],

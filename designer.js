@@ -12,27 +12,35 @@
         'category':'Mouse Events' 
     },{ 
         'name':'dblclick', 
+        'description':'On Double Click',
         'category':'Mouse Events'
     },{ 
         'name':'mousedown', 
+        'description':'On Mouse Down',
         'category':'Mouse Events'
     },{ 
         'name':'mouseout',
+        'description':'On Mouse Out',
          'category':'Mouse Events'
     },{ 
         'name':'mouseover',
+        'description':'On Mouse Over',
         'category':'Mouse Events'
     },{ 
         'name':'mouseup',
+        'description':'On Mouse Up',
         'category':'Mouse Events'
     },{ 
         'name':'touchstart',
+        'description':'On Touch Start',
         'category':'Touch Events'
     },{ 
         'name':'touchend',
+        'description':'On Touch End',
         'category':'Touch Events'
     },{ 
         'name':'touchcancel',
+        'description':'On Touch Cancel',
         'category':'Touch Events'
     });
 
@@ -65,6 +73,11 @@
     });
 
     Button.customizeProperty('actionType', { category: 'ActionSource property' });
+    Button.customizeProperty('plainText', {title: 'Plain Text'});
+    Button.customizeProperty('url', {title: 'URL'});
+    Button.customizeProperty('urlTarget', {title: 'Target'});
+    Button.customizeProperty('actionSource', {title: 'Source'});
+    Button.customizeProperty('actionType', {title: 'Action'});
 
     Button.setPanelStyle({
         'fClass': true, //This property is for the design panel
