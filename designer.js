@@ -87,9 +87,7 @@
         'innerShadow': true,
         'background': true,
         'border': true,
-        'sizePosition': true,
-        'label': true,
-        'disabled': ['border-radius']
+        'sizePosition': true
     });
 
 });
