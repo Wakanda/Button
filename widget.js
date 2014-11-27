@@ -5,13 +5,7 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
         tagName: 'button',
         title: Widget.property({
             type: 'string',
-            description: "Title to display for the Button widget.",
-            defaultValueCallback: function(plainText) {
-                if(plainText){
-                    return this.node.textContent;
-                }
-                return this.node.innerHTML;
-            }
+            description: "Title to display for the Button widget."            
         }),
         plainText: Widget.property({
             type: 'boolean',
@@ -80,12 +74,12 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
             } else {
                 this.node.innerHTML = title;
             }
-            this.node.insertAdjacentHTML('afterbegin','<span/>');
+            this.node.insertAdjacentHTML('afterbegin','<span/>');            
         },
         init: function() {
             // button text
             this.renderTitle();
-            this.title.onChange(this.renderTitle);
+            this.title.onChange(function(){ this.renderTitle() });
             this.plainText.onChange(function(){ this.renderTitle() });
             this.actionType.onChange(function(){ this.renderTitle() });
 
