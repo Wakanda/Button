@@ -72,12 +72,11 @@
         $(this.node).off('click', this._handleClick);
     });
 
-    Button.customizeProperty('actionType', { category: 'ActionSource property' });
     Button.customizeProperty('plainText', {title: 'Plain Text'});
     Button.customizeProperty('url', {title: 'URL'});
     Button.customizeProperty('urlTarget', {title: 'Target'});
-    Button.customizeProperty('actionSource', {title: 'Source'});
-    Button.customizeProperty('actionType', {title: 'Action'});
+    Button.customizeProperty('actionSource', {title: 'Source', category: 'Action Source property'});
+    Button.customizeProperty('actionType', { title: 'Action', category: 'Action Source property' });
 
     Button.setPanelStyle({
         'fClass': true, //This property is for the design panel
