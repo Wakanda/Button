@@ -84,7 +84,7 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
             this.actionType.onChange(function(){ this.renderTitle() });
 
             // bootstrap classes
-            this.addClass('waf-widget btn btn-default');
+            this.addClass('btn btn-default');
 
             this._handleClick = function(event) {
                 this.fire('action');
