@@ -1,7 +1,7 @@
 (function(Button) {
     "use strict";
-    Button.setWidth(110);
-    Button.setHeight(45);
+    Button.setWidth(92);
+    Button.setHeight(22);
 
     Button.addStates('hover', 'active', 'focus', 'disabled');
 
