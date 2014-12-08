@@ -1,7 +1,13 @@
 (function(Button) {
     "use strict";
-    Button.setWidth(92);
-    Button.setHeight(22);
+    
+    if(Designer && Designer.isMobile){
+        Button.setWidth(92);
+        Button.setHeight(29);
+    }else{
+        Button.setWidth(92);
+        Button.setHeight(22);
+    }
 
     Button.addStates('hover', 'active', 'focus', 'disabled');
 
