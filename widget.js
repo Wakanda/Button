@@ -5,46 +5,44 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
         tagName: 'button',
         title: Widget.property({
             type: 'string',
-            description: "Title to display for the Button widget."            
+            description: "Title displayed as plain text or formatted HTML text"            
         }),
         plainText: Widget.property({
             type: 'boolean',
-            description: "Format HTML text for the Button widget's title.",            
+            description: "Format HTML text for the Button widget's title",            
             defaultValue: true,
             bindable: false
         }),
         actionSource: Widget.property({ 
             type: 'datasource',
-            description: "Datasource to define for automatic actions."
+            description: "Datasource to define for automatic actions"
         }),
         actionType: Widget.property({
             type: 'enum',
-            description: "Action to execute on datasource.",
+            description: "Action to execute on datasource",
             values: {
                 '':               '',
-                'addNewElement':  'create',
-                'save':           'save',
-                'selectNext':     'next',
-                'selectPrevious': 'previous',
-                'last':           'last',
-                'first':          'first',
-                'removeCurrent':  'remove'
+                'addNewElement':  'Create',
+                'save':           'Save',
+                'selectNext':     'Next',
+                'selectPrevious': 'Previous',
+                'last':           'Last',
+                'first':          'First',
+                'removeCurrent':  'Remove'
             },
             defaultValue: '',
             bindable: false
         }),
         url: Widget.property({ 
             type: 'string',
-            description: "URL to go to when Button widget is clicked."
+            description: "URL to go to when the Button widget is clicked"
         }),
         urlTarget: Widget.property({
             type: 'enum',
+            description: "Location where to open the URL",
             values: ['_blank', '_self'],
             bindable: false
         }),
-        addTabIndex : function() {
-
-        },
         renderTitle: function(title) {
             title = title || this.title() || 'Button';
             if(title == 'Button' || !this.title() && this.actionSource.boundDatasource() != null){
@@ -76,12 +74,18 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
             }
             this.node.insertAdjacentHTML('afterbegin','<span/>');            
         },
+        addTabIndex : function() {
+
+        },
         init: function() {
             // button text
             this.renderTitle();
             this.title.onChange(function(){ this.renderTitle() });
             this.plainText.onChange(function(){ this.renderTitle() });
             this.actionType.onChange(function(){ this.renderTitle() });
+
+            // tabIndex
+            this.addTabIndex();
 
             // bootstrap classes
             this.addClass('btn btn-default');

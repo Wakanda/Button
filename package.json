@@ -4,18 +4,20 @@
     "type": "widget",
     "studioName": "Button",
     "iconPath": "/icons/widget.png",
-    "author": "stephane.puybareau@4d.com",
+    "author": "4D SAS",
     "contributors": [
-        "Olivier Mobili"
+        "Stéphane Puybareau",
+        "Sébastien Lombard",
+        "Jonathan Argentiero"
     ],
     "version": "1.0.0",
-    "copyright": "(c) 2014 4D",
+    "copyright": "(c) 2014 4D SAS",
     "repository": {
         "type": "git",
-        "url": "https://github.com/Puyb4D/Button.git"
+        "url": "https://github.com/Wakanda/Button.git"
     },
     "keywords": ["wakanda", "widget"],
-    "engines": {"wakanda": ">= 10"},
+    "engines": {"wakanda": ">= 11"},
     "license": "MIT",
     "loadDependencies": [
         {"id": "Widget_V2"},
