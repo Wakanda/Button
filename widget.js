@@ -43,6 +43,14 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
             values: ['_blank', '_self'],
             bindable: false
         }),
+        disable: function() {
+           this.$super('disable')();
+           this.node.disabled = true;
+        },
+        enable: function() {
+           this.$super('enable')();
+           this.node.disabled = false;
+        },
         renderTitle: function(title) {
             title = title || this.title() || 'Button';
             if(title == 'Button' || !this.title() && this.actionSource.boundDatasource() != null){
