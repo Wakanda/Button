@@ -2,7 +2,7 @@
     "use strict";
     
     Button.setWidth(92);
-    Button.setHeight(44);
+    Button.setHeight(32);
 
     Button.addStates('hover', 'active', 'focus', 'disabled');
 
