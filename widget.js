@@ -82,18 +82,12 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
             }
             this.node.insertAdjacentHTML('afterbegin','<span/>');            
         },
-        addTabIndex : function() {
-
-        },
         init: function() {
             // button text
             this.renderTitle();
             this.title.onChange(function(){ this.renderTitle() });
             this.plainText.onChange(function(){ this.renderTitle() });
             this.actionType.onChange(function(){ this.renderTitle() });
-
-            // tabIndex
-            this.addTabIndex();
 
             // bootstrap classes
             this.addClass('btn btn-default');
@@ -129,5 +123,7 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
         }
     });
 
+    Button.addTabIndex();
+    
     return Button;
 });
