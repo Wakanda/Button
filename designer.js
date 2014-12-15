@@ -32,16 +32,16 @@
         'description':'On Mouse Up',
         'category':'Mouse Events'
     },{ 
-        'name':'touchstart',
-        'description':'On Touch Start',
+        'name':'touchcancel',
+        'description':'On Touch Cancel',
         'category':'Touch Events'
     },{ 
         'name':'touchend',
         'description':'On Touch End',
         'category':'Touch Events'
     },{ 
-        'name':'touchcancel',
-        'description':'On Touch Cancel',
+        'name':'touchstart',
+        'description':'On Touch Start',
         'category':'Touch Events'
     });
 
