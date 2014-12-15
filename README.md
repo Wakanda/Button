@@ -10,6 +10,7 @@ This widget has the following properties:
 * __Plain text__: Display the Button's Title property as either HTML or plain text. 
 * __URL__: Defines the URL to go to.
 * __Target__: Open the URL in a new page or the same page.
+* __Tabindex__: Defines the tab order of the widget on the Page. 
 * __Action Source property__: This section allows you to define a datasource on which an automatic action can be executed:
 	* __Source__: Datasource name.
 	* __Action__: Automated functions to be executed on the datasource.
@@ -30,4 +31,4 @@ For more information, refer to the [Widget v2 Events](http://doc.wakanda.org/Wak
 You can customize the look of each Button by making changes in the __Styles__ tab for each of its Default, Hover, Active, Focus, and Disabled states. For more information, refer to the [Widget v2 Styles](http://doc.wakanda.org/WakandaStudio0/help/Title/en/page4611.html "Widget v2 Styles") chapter.
 
 ### API
-The Button widget has its own [API](http://doc.wakanda.org/WakandaStudio/help/Title/en/page4613.html "Button v2 API") and also inherits from the [Widgets v2 Instance API](http://doc.wakanda.org/WakandaStudio/help/Title/en/page4066.html " Widgets v2 Instance API").
+The Button widget has its own [API](http://doc.wakanda.org/WakandaStudio/help/Title/en/page4613.html "Button v2 API") and also inherits from the [Widgets v2 Instance API](http://doc.wakanda.org/WakandaStudio/help/Title/en/page4066.html "Widgets v2 Instance API").
