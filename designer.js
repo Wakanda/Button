@@ -76,8 +76,8 @@
     Button.customizeProperty('plainText', {title: 'Plain text'});
     Button.customizeProperty('url', {title: 'URL'});
     Button.customizeProperty('urlTarget', {title: 'Target'});
-    Button.customizeProperty('actionSource', {title: 'Source', category: 'Action Source property'});
-    Button.customizeProperty('actionType', { title: 'Action', category: 'Action Source property' });
+    Button.customizeProperty('actionSource', {title: 'Source', category: String.toDisplay('actionSource') + ' property' });
+    Button.customizeProperty('actionType', { title: 'Action', category: String.toDisplay('actionSource') + ' property' });
 
     Button.setPanelStyle({
         'fClass': true, //This property is for the design panel
