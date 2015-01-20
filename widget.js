@@ -5,7 +5,16 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
         tagName: 'button',
         title: Widget.property({
             type: 'string',
-            description: "Title displayed as plain text or formatted HTML text"            
+            description: "Title displayed as plain text or formatted HTML text",
+            defaultValueCallback: function() {
+                if(this.node.childNodes[2]){
+                    if(this.plainText()) {
+                        return this.node.childNodes[2].textContent;
+                    }
+                    return this.node.childNodes[2].innerHTML;
+                }
+                return '';
+            }
         }),
         plainText: Widget.property({
             type: 'boolean',
@@ -51,39 +60,59 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
            this.$super('enable')();
            this.node.disabled = false;
         },
+        initTitle: function(){
+            this.node.innerHTML = '';
+            // icon reserved span
+            this.node.insertAdjacentHTML('afterbegin','<span/>');
+            // title suggestion span
+            this.node.insertAdjacentHTML('afterbegin','<span/>');
+            // user defined title span
+            this.node.insertAdjacentHTML('afterbegin','<span/>');
+        },
+        resetTitle: function(){
+            this.node.childNodes[1].innerHTML = '';
+            this.node.childNodes[2].innerHTML = '';
+        },
         renderTitle: function(title) {
-            title = title || this.title() || 'Button';
-            if(title == 'Button' || !this.title() && this.actionSource.boundDatasource() != null){
-                switch (this.actionType()) {
-                    case '':
-                        title = 'Button';
-                        break;
-                    case 'addNewElement': 
-                        title = 'Create';
-                        break;
-                    case 'selectPrevious':
-                        title = 'Previous';
-                        break;
-                    case 'selectNext':
-                        title = 'Next';
-                        break;
-                    case 'removeCurrent':
-                        title = 'Remove';
-                        break;
-                    default:
-                        title = this.actionType().substring(0,1).toUpperCase() + this.actionType().substring(1);
-                        break;
+            this.resetTitle();
+            title = title || this.title();
+
+            if(!title){
+                title = 'Button';
+                if(this.actionSource.boundDatasource() != null){
+                    switch (this.actionType()) {
+                        case '':
+                            title = 'Button';
+                            break;
+                        case 'addNewElement': 
+                            title = 'Create';
+                            break;
+                        case 'selectPrevious':
+                            title = 'Previous';
+                            break;
+                        case 'selectNext':
+                            title = 'Next';
+                            break;
+                        case 'removeCurrent':
+                            title = 'Remove';
+                            break;
+                        default:
+                            title = this.actionType().substring(0,1).toUpperCase() + this.actionType().substring(1);
+                            break;
+                    }
                 }
+                this.node.childNodes[1].innerHTML = title;
+              
+            }else{
+                if(this.plainText()) {
+                    this.node.childNodes[2].textContent = this.node.childNodes[2].innerHTML = title;
+                } else {
+                    this.node.childNodes[2].innerHTML = title;
+                }     
             }
-            if(this.plainText()) {
-                this.node.textContent = title;
-            } else {
-                this.node.innerHTML = title;
-            }
-            this.node.insertAdjacentHTML('afterbegin','<span/>');            
         },
         init: function() {
-            // button text
+            this.initTitle();
             this.renderTitle();
             this.title.onChange(function(){ this.renderTitle() });
             this.plainText.onChange(function(){ this.renderTitle() });
