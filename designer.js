@@ -4,7 +4,7 @@
     Button.setWidth(92);
     Button.setHeight(32);
 
-    Button.addStates('hover', 'active', 'focus', 'disabled');
+    Button.addStates(':hover', ':active', ':focus', ':disabled');
 
     Button.addEvents({ 
         'name':'action' 
