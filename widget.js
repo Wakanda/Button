@@ -50,6 +50,7 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
             type: 'enum',
             description: "Location where to open the URL",
             values: ['_blank', '_self'],
+            defaultValue: '_blank',
             bindable: false
         }),
         disable: function() {
