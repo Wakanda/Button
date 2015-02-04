@@ -67,8 +67,6 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
             this.node.insertAdjacentHTML('afterbegin','<span class="btn-text"></span>');
             // user defined title span
             this.node.insertAdjacentHTML('afterbegin','<span class="btn-text"></span>');
-            // icon reserved span
-            this.node.insertAdjacentHTML('afterbegin','<span/>');
         },
         resetTitle: function(){
             $(this.node).children('.btn-text').html('');
