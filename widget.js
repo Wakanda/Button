@@ -7,11 +7,11 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
             type: 'string',
             description: "Title displayed as plain text or formatted HTML text",
             defaultValueCallback: function() {
-                if(this.node.childNodes[2]){
+                if($(this.node).children('.btn-text').length > 0){
                     if(this.plainText()) {
-                        return this.node.childNodes[2].textContent;
+                        return $(this.node).children('.btn-text').last()[0].textContent;
                     }
-                    return this.node.childNodes[2].innerHTML;
+                    return $(this.node).children('.btn-text').last()[0].innerHTML;
                 }
                 return '';
             }
@@ -63,16 +63,15 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
         },
         initTitle: function(){
             this.node.innerHTML = '';
-            // icon reserved span
-            this.node.insertAdjacentHTML('afterbegin','<span/>');
             // title suggestion span
-            this.node.insertAdjacentHTML('afterbegin','<span/>');
+            this.node.insertAdjacentHTML('afterbegin','<span class="btn-text"></span>');
             // user defined title span
+            this.node.insertAdjacentHTML('afterbegin','<span class="btn-text"></span>');
+            // icon reserved span
             this.node.insertAdjacentHTML('afterbegin','<span/>');
         },
         resetTitle: function(){
-            this.node.childNodes[1].innerHTML = '';
-            this.node.childNodes[2].innerHTML = '';
+            $(this.node).children('.btn-text').html('');
         },
         renderTitle: function(title) {
             this.resetTitle();
@@ -102,13 +101,13 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
                             break;
                     }
                 }
-                this.node.childNodes[1].innerHTML = title;
+                $(this.node).children('.btn-text').first().html(title);
               
             }else{
                 if(this.plainText()) {
-                    this.node.childNodes[2].textContent = this.node.childNodes[2].innerHTML = title;
+                    $(this.node).children('.btn-text').last()[0].textContent = $(this.node).children('.btn-text').last()[0].innerHTML = title;
                 } else {
-                    this.node.childNodes[2].innerHTML = title;
+                    $(this.node).children('.btn-text').last().html(title);
                 }     
             }
         },
