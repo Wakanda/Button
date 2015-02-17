@@ -55,11 +55,11 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
         }),
         disable: function() {
            this.$super('disable')();
-           this.node.disabled = true;
+           $(this.node).prop('disabled', true);
         },
         enable: function() {
            this.$super('enable')();
-           this.node.disabled = false;
+           $(this.node).prop('disabled', false);
         },
         initTitle: function(){
             this.node.innerHTML = '';
