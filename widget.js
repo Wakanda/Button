@@ -54,12 +54,12 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
             bindable: false
         }),
         disable: function() {
-           this.$super('disable')();
-           $(this.node).prop('disabled', true);
+            this.$super('disable')();
+            $(this.node).prop('disabled', true);
         },
         enable: function() {
-           this.$super('enable')();
-           $(this.node).prop('disabled', false);
+            this.$super('enable')();
+            $(this.node).prop('disabled', false);
         },
         initTitle: function(){
             this.node.innerHTML = '';
@@ -77,7 +77,7 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
 
             if(!title){
                 title = 'Button';
-                if(this.actionSource.boundDatasource() != null){
+                if(this.actionSource.boundDatasource() !== null){
                     switch (this.actionType()) {
                         case '':
                             title = 'Button';
@@ -112,9 +112,9 @@ WAF.define('Button', ['waf-core/widget'], function(Widget) {
         init: function() {
             this.initTitle();
             this.renderTitle();
-            this.title.onChange(function(){ this.renderTitle() });
-            this.plainText.onChange(function(){ this.renderTitle() });
-            this.actionType.onChange(function(){ this.renderTitle() });
+            this.title.onChange(function(){ this.renderTitle(); });
+            this.plainText.onChange(function(){ this.renderTitle(); });
+            this.actionType.onChange(function(){ this.renderTitle(); });
 
             // bootstrap classes
             this.addClass('btn btn-default');
